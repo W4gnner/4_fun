@@ -1,0 +1,51 @@
+#abecedário
+abecedario = {'a' : '24831','b' : '84362','c' : '42583','d' : '46754','e' : '87765','f' : '78466',
+'g' : '51347','h' : '45638','i' : '78459','j' : '58710','k' : '15471','l' : '15782','m' : '13764',
+'n' : '18274','o' : '14745','p' : '11386','q' : '14847','r' : '18965','s' : '18759','t' : '29680',
+'u' : '27541','v' : '28572','w' : '27573','x' : '24685','y' : '24575','z' : '28756','á' : '86523',
+'ê' : '65456','é' : '12326','í' : '45184','ú' : '12315',' ' : '27723','ã' : '46543','ô' : '89461',
+'õ' : '89748','à' : '65416','ç' : '21351','"' : '65132',"'" : '65451','ó' : '64849','â' : '94984',
+'?' : '21238','!' : '89429',',' : '45630','.' : '36151',';' : '#535#','1' : '11111','2' : '22222',
+'3' : '33333','4' : '44444','5' : '55555','6' : '66666','7' : '77777','8' : '88888','9' : '99999',
+'0' : '00000'}
+#simplificação
+chaves = list(abecedario.keys())
+valores = list(abecedario.values())
+
+#inicio
+acao = input(' Você quer codificar ou decodificar um texto? [C/D]')
+
+#codificação
+if acao.upper() == 'C':
+    print(' Algumas informações: \n  Caso queira pular linha digite ";" (ponto e vírgula). \n  (obs: O programa ainda não está em sua fase final, é possível que falte caracteres)')
+    PalavraParaCodificar = input(' Digite o seu texto: \n')
+    tmn = len(PalavraParaCodificar)
+    codificado = ''
+    for x in range (tmn):
+        codigo = PalavraParaCodificar[x].lower()
+        if codigo in abecedario:
+            codificado += abecedario[codigo]
+    print(codificado)
+elif acao.upper() == 'D':
+    TextoParaDecodificar = str(input(' Digite o texto que deseja decodificar \n'))
+    TmnDecod = len(TextoParaDecodificar)
+    a = ''
+    inicio = 0
+    fim = 5
+    texto = 'existe'
+    while texto == 'existe':
+        code = TextoParaDecodificar[inicio:fim]
+        if code == '#535#':
+            a += '\n'
+        else:    
+            posicao = valores.index(code)
+            a += chaves[posicao]
+    
+        inicio += 5
+        fim += 5
+    
+        if fim > TmnDecod:
+            texto = 'não existe mais'
+    print(a.capitalize())
+else:
+    print(' Algo deu errado...')
